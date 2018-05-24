@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+   <!-- <script src="myPlugins1.js"></script>-->
+    <script src="tabFilter.js"></script>
+    <title>Jquery插件训练</title>
+</head>
+<style>
+    .clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        height: 0;
+        visibility: hidden;
+    }
+
+    .tab-ul {
+        padding: 0;
+        border-radius: 4px;
+        border-bottom: 1px solid #dedede;
+        box-sizing: border-box;
+        margin-bottom: -1px;
+    }
+
+    .tab-ul .tab-li {
+        list-style: none;
+        float: left;
+        width: 120px;
+        height: 20px;
+        padding: 5px;
+        border-top: 1px solid #dedede;
+        border-right: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        cursor: pointer;
+        border-radius: 3px;
+        margin-bottom: -1px;
+        background: #fff;
+
+    }
+
+    .tab-ul .tab-li:nth-child(1) {
+        border-left: 1px solid #dedede;
+    }
+
+    .tab-ul .tab-li.active {
+        border-bottom: 1px solid #eee;
+        background: #eee;
+
+    }
+
+    .tab-content {
+        border: #dedede solid 1px;
+        border-top-width: 0;
+        padding: 10px;
+    }
+</style>
+<body>
+<!--<a>这是我的第一个JQUERY插件</a>-->
+
+
+<div id="tab-cont">
+
+    <ul class="tab-ul  clearfix">
+        <li class="tab-li active"  data="tab1">我是标签1</li>
+        <li class="tab-li" data="tab2">我是标签2</li>
+        <li class="tab-li" data="tab3">我是标签3</li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tabs_content" style="display: none;">
+            我是内容1
+        </div>
+        <div class="tabs_content" style="display:none">
+            我是内容2
+        </div>
+        <div class="tabs_content" style="display: none;">
+            我是内容3
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+     /*   $('a').myPlugin1({'bgc': '#dedede', 'fontSize': '20px'}, callback);*/
+        $('#tab-cont').tab({
+            btn: '.tab-li',
+            active: 'active',
+            content: '.tabs_content',
+            event: 'click',//触发的事件
+            effect: 'fade',
+            backFn: function (param) {
+                callback1(param)
+            }
+        })
+
+
+    });
+   /* function callback() {
+        console.log('1111')
+    }*/
+
+    function callback1(param) {
+        console.log(param)
+    }
+
+</script>
+
+</html>
